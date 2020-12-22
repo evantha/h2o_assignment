@@ -2,6 +2,8 @@ package com.example.feedbackcollector.controller;
 
 import com.example.feedbackcollector.model.Feedback;
 import com.example.feedbackcollector.service.FeedbackService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ import java.util.concurrent.ExecutionException;
 @Validated
 @RequestMapping("/api/v1/feedback")
 public class FeedbackController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeedbackController.class);
 
     @Autowired
     FeedbackService feedbackService;
@@ -32,7 +36,7 @@ public class FeedbackController {
 
     @PostMapping
     public Feedback saveFeedback(@Valid @RequestBody Feedback feedback) throws ExecutionException, InterruptedException {
-        System.out.println("saveFeedback " + feedback);
+        LOGGER.info("saving feedback for userId {}", feedback.getUserId());
         return feedbackService.saveFeedback(feedback).get();
     }
 }

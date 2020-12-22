@@ -11,6 +11,7 @@ public class Feedback {
 
     @Id
     private String id;
+    @NotNull
     private String userId;
     @Indexed()
     private String pageId;

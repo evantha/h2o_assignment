@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    volumes:
+      - ./volumes/logs:/data
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    command: server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  feedback-api:
+    build: ./feedback-api
+    container_name: feedback-api
+    ports:
+      - "8080:8080"
+    environment: 
+      DB_URI: mongodb://test:test!@feedback-db:27017/feedback
+    volumes:
+      - ./volumes/logs/feedback-api:/var/log/feedback-api
+    depends_on:
+      - feedback-db
+    restart: on-failure
+
+  feedback-db:
+    image: mongo:4.2.8
+    container_name: feedback-db
+    volumes:
+      - ./volumes/db:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=test
+    - MONGO_INITDB_ROOT_PASSWORD=test!
+    - MONGO_INITDB_DATABASE=feedback
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 5s
+      timeout: 2s
+      retries: 10
