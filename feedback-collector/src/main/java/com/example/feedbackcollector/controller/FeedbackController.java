@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @Validated
@@ -30,8 +31,8 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public Feedback saveFeedback(@Valid @RequestBody Feedback feedback) {
+    public Feedback saveFeedback(@Valid @RequestBody Feedback feedback) throws ExecutionException, InterruptedException {
         System.out.println("saveFeedback " + feedback);
-        return feedbackService.saveFeedback(feedback);
+        return feedbackService.saveFeedback(feedback).get();
     }
 }
