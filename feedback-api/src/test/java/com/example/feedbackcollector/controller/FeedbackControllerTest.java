@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +21,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 //@SpringBootTest
 @WebMvcTest(FeedbackController.class)
@@ -69,16 +67,16 @@ class FeedbackControllerTest {
         assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 
         Feedback result = objectMapper.readValue(mvcResult.getResponse().getContentAsString(),Feedback.class);
-        assertEquals(pageId, result.getPageId());
+        assertEquals(pageId, result.getProductId());
     }
 
 
     private Feedback getFeedback(int rating, String comment, String pageId) {
         Feedback feedback = new Feedback();
         feedback.setUserId("u1");
-        feedback.setStartCount(rating);
+        feedback.setStarCount(rating);
         feedback.setDescription(comment);
-        feedback.setPageId(pageId);
+        feedback.setProductId(pageId);
         return feedback;
     }
 

@@ -9,7 +9,7 @@ import java.util.concurrent.CompletableFuture;
 public interface FeedbackService {
     List<Feedback> getAllFeedback();
 
-    Feedback getFeedback(String pageId);
+    Feedback getFeedback(String productId);
 
     CompletableFuture<Feedback> saveFeedback(Feedback feedback);
 }

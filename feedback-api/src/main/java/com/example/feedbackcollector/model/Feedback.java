@@ -14,10 +14,10 @@ public class Feedback {
     @NotNull
     private String userId;
     @Indexed()
-    private String pageId;
+    private String productId;
     @Min(1)
     @Max(5)
-    private int startCount;
+    private int starCount;
     @Size(max=500)
     private String description;
 
@@ -37,20 +37,20 @@ public class Feedback {
         this.userId = userId;
     }
 
-    public String getPageId() {
-        return pageId;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setPageId(String pageId) {
-        this.pageId = pageId;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public int getStartCount() {
-        return startCount;
+    public int getStarCount() {
+        return starCount;
     }
 
-    public void setStartCount(int startCount) {
-        this.startCount = startCount;
+    public void setStarCount(int starCount) {
+        this.starCount = starCount;
     }
 
     public String getDescription() {
@@ -66,8 +66,8 @@ public class Feedback {
         return "Feedback{" +
                 "id='" + id + '\'' +
                 ", userId='" + userId + '\'' +
-                ", pageId='" + pageId + '\'' +
-                ", startCount=" + startCount +
+                ", pageId='" + productId + '\'' +
+                ", startCount=" + starCount +
                 ", description='" + description + '\'' +
                 '}';
     }

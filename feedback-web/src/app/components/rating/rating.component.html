@@ -1,0 +1,33 @@
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title" [hidden]="readonly">Feedback Form</h5>
+    <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <h1>
+          <ngb-rating [readonly]="readonly" name="rating" max="5" [(rate)]="feedback.starCount"></ngb-rating>
+        </h1>
+      </div>
+
+      <div class="form-group">
+        <label for="product">Product</label>
+        <select class="form-control" id="product" [(ngModel)]="feedback.productId" name="product" #product="ngModel">
+          <option *ngFor="let product of products" [value]="product.id">
+            {{ product.title }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Comment</label>
+        <br />
+        <textarea [readonly]="readonly" name="description" rows="4" cols="50"
+          [(ngModel)]="feedback.description"></textarea>
+      </div>
+
+      <button [hidden]="readonly" type="submit" class="btn btn-success">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

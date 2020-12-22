@@ -1,0 +1,13 @@
+<!-- Page Content -->
+<div class="container">
+  <div class="row justify-content-center">
+    <app-rating [readonly]="false"></app-rating>
+  </div>
+  <hr />
+  <div class="row">
+    <div *ngFor="let feedback of allFeedback$ | async">
+      <!-- <div class="col-sm"><app-rating [readonly]="true"></app-rating></div> -->
+      <app-rating [readonly]="true" [feedback]="feedback"></app-rating>
+    </div>
+  </div>
+</div>

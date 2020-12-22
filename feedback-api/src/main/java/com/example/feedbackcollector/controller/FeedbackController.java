@@ -24,14 +24,13 @@ public class FeedbackController {
 
     @GetMapping
     public List<Feedback> getAllFeedback() {
-        System.out.println("getAllFeedback");
         return feedbackService.getAllFeedback();
     }
 
-    @GetMapping(path = "{pageId}")
-    public Feedback getFeedback(@PathVariable("pageId") String pageId) {
-        System.out.println("getFeedback "+ pageId);
-        return feedbackService.getFeedback(pageId);
+    @GetMapping(path = "{productId}")
+    public Feedback getFeedback(@PathVariable("productId") String productId) {
+        LOGGER.info("retrieving feedback for product {}", productId);
+        return feedbackService.getFeedback(productId);
     }
 
     @PostMapping

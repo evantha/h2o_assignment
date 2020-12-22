@@ -26,8 +26,8 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public Feedback getFeedback(String pageId) {
-        return repository.findByPageId(pageId);
+    public Feedback getFeedback(String productId) {
+        return repository.findByProductId(productId);
     }
 
     @Override
