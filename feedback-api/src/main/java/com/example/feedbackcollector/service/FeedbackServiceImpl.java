@@ -1,7 +1,7 @@
 package com.example.feedbackcollector.service;
 
-import com.example.feedbackcollector.repository.FeedbackRepository;
 import com.example.feedbackcollector.model.Feedback;
+import com.example.feedbackcollector.repository.FeedbackRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

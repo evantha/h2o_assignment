@@ -4,7 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Document
 public class Feedback {
@@ -18,7 +21,7 @@ public class Feedback {
     @Min(1)
     @Max(5)
     private int starCount;
-    @Size(max=500)
+    @Size(max = 500)
     private String description;
 
     public String getId() {

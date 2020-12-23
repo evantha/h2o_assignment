@@ -11,7 +11,7 @@
 
       <div class="form-group">
         <label for="product">Product</label>
-        <select class="form-control" id="product" [(ngModel)]="feedback.productId" name="product" #product="ngModel">
+        <select [disabled]="readonly" class="form-control" id="product" [(ngModel)]="feedback.productId" name="product" #product="ngModel">
           <option *ngFor="let product of products" [value]="product.id">
             {{ product.title }}
           </option>
