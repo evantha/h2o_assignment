@@ -29,4 +29,4 @@ docker-compose up
         - Secret key: `minio123`
 
 ### Demo
-![]()
+![](https://github.com/evantha/h2o_assignment/blob/main/img/Assignment.gif)
